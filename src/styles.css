@@ -1,1 +1,6 @@
-/* You can add global styles to this file, and also import other style files */
+/* 
+You can add global styles to this file, and also import other style files 
+전역 css
+테마 종류 https://material.angular.io/guide/theming
+*/
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
