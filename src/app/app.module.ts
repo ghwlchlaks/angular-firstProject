@@ -6,7 +6,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 //matarial table module import
 import { MatTableModule } from '@angular/material/table';
 
-import { AppComponent } from './app.component'; // app.component.ts파일에서 AppComponent import
+ // app.component.ts파일에서 AppComponent import
+import { AppComponent } from './app.component';
+import { HomeComponent } from './pages/home/home.component';
+
+// feature module import
+import {Step1Module} from './step1/step1.module';
+import {Step2Module} from './step2/step2.module';
+
+//routing module import 
+import {AppRoutingModule} from './app-routing/app-routing.module';
 
 /*
 @NgModule -> 해당 클래스가 모듈이란것을 명시
@@ -17,12 +26,16 @@ metadata:declarations : 사용하는 component를 등록해야 component의 type
 */
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    MatTableModule
+    MatTableModule,
+    AppRoutingModule,
+    Step1Module,
+    Step2Module
   ],
   providers: [],
   bootstrap: [AppComponent]
