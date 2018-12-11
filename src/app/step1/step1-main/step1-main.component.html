@@ -1,3 +1,28 @@
-<p>
-  step1-main works!
-</p>
+<div class="bookSearch-outer">
+  <div class="d-flex align-items-center p-3 my-3 text-white-50 bg-purple rounded box-shadow">
+    <img class="mr-3" src="assets/images/search-icon.png" alt="" width="48" height="48">
+    <div class="lh-100">
+      <h5 class="mb-0 text-white lh-100">Search Result</h5>
+    </div>
+  </div>
+
+  <div class="form-group col-md-4">
+    <label for="inputState">도서 종류</label>
+    <select id="inputState" class="form-control">
+      <option selected>선택하세요...</option>
+      <option>국내외도서</option>
+      <option>국내도서</option>
+      <option>국외도서</option>
+    </select>
+  </div>
+
+  <div>
+    <app-step1-search></app-step1-search>
+  </div>
+  <div>
+    <app-step1-detail></app-step1-detail>
+  </div>
+  <div>
+    <app-step1-list></app-step1-list>
+  </div>
+</div>

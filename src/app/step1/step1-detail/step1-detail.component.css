@@ -1,0 +1,17 @@
+.example-card {
+    width: 500px;
+    margin: 0 auto;
+  }
+  
+  .example-header-image {
+    background-image: url('/assets/images/book-icon.jpg');
+    background-size: cover;
+  }
+  
+  .book-image {
+    width: 100px !important;
+  }
+  
+  .detail-header-style {
+    font-family: Georgia;
+  }
