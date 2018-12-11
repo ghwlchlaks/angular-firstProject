@@ -12,6 +12,18 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 
 import { MatCardModule } from '@angular/material/card';
 
+/* 
+양방향 바인딩을 위한 formsModule import
+[(ngModel)]과 같이 바인딩 대상 선언
+*/
+import {FormsModule} from '@angular/forms';
+
+/* 
+한글 양방향바인딩을 위한 
+COMPOSITION_BUFFER_MODE import
+*/
+import {COMPOSITION_BUFFER_MODE} from '@angular/forms';
+
 @NgModule({
   declarations: [Step1MainComponent, Step1SearchComponent, Step1DetailComponent, Step1ListComponent],
   imports: [
@@ -20,7 +32,14 @@ import { MatCardModule } from '@angular/material/card';
     MatInputModule,
     MatButtonModule,
     MatFormFieldModule,
-    MatCardModule
+    MatCardModule,
+    FormsModule
+  ],
+  providers: [
+    {
+      provide: COMPOSITION_BUFFER_MODE,
+      useValue: false
+    }
   ]
 })
 export class Step1Module { }

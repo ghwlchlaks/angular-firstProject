@@ -1,16 +1,21 @@
 <mat-card class="example-card">
   <mat-card-header class="detail-header-style">
     <div mat-card-avatar class="example-header-image"></div>
-    <mat-card-title>제목 : Angular 일주일 완성</mat-card-title>
-    <mat-card-subtitle>저자 : 홍길동</mat-card-subtitle>
+    <mat-card-title>제목 : {{step1.btitle}}</mat-card-title>
+    <mat-card-subtitle>저자 : {{step1.bauthor}}</mat-card-subtitle>
   </mat-card-header>
-  <img mat-card-image class="book-image" src="">
+  <img mat-card-image class="book-image" src="{{step1.bimgurl}}">
   <mat-card-content>
     <p>
-      ISBN : 123-456, 도서 가격 : 5000, 출판일 : 2017년 12월
+      ISBN : {{step1.bisbn}}, 도서 가격 : {{step1.bprice}}, 출판일 : {{step1.bdate}}
     </p>
   </mat-card-content>
   <mat-card-actions>
-    <button mat-button mat-raised-button color="primary">바로 구입</button>
+    <!-- property binding :html element에대한 값을(property) component 속성과 바인딩, ex) step1.bprice값이 20000보다 크면 버튼 disabled-->
+    <button 
+    mat-button 
+    mat-raised-button 
+    color="primary" 
+    [disabled]="step1.bprice > 20000">바로 구입</button>
   </mat-card-actions>
 </mat-card>
