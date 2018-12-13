@@ -1,6 +1,7 @@
 <div class="example-container">
   <!-- data binding : Interpolation(단방향 바인딩) -> component에서 선언한 속성을 view에서 사용하는 것, ex) {{value}}-->
   <mat-toolbar class="search-toolbar-style">Search Keyword : {{keyword}}</mat-toolbar>
+  <ng-container *ngIf="_bookCategory != null">{{_bookCategory}}</ng-container>
   <mat-form-field>
      <!-- #inputKeyword로 설정해놓으면 #을 제외한 변수이름으로 참조가능--> 
     단방향 바인딩 : <input matInput #inputKeyword placeholder="Search Keyword">

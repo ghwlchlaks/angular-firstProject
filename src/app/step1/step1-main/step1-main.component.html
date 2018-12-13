@@ -9,7 +9,7 @@
   <div class="example-container">
     <mat-form-field>
       <!-- selectedValue속성에 양방향 바인딩-->
-      <mat-select placeholder="도서종류"  [(ngModel)]="selectedValue">
+      <mat-select placeholder="도서종류" #bookCategorySelect [(ngModel)]="selectedValue" (ngModelChange)="changeValue(bookCategory.value)">
         <!-- angular 구조적 지시자(DOM을 제어하는 방식)인 ngIf, ngFor 등으로 조건문 처리 가능-->
         <mat-option *ngFor="let category of bookCategory"
                     [value]="category.value">
@@ -20,7 +20,8 @@
   </div>
 
   <div>
-    <app-step1-search></app-step1-search>
+    <!-- bookCategory라는 이름으로 displayCategoryName을 바인딩-->
+    <app-step1-search [bookCategory]="displayCategoryName"></app-step1-search>
   </div>
   <div>
     <app-step1-detail></app-step1-detail>
