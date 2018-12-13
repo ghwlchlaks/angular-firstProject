@@ -1,0 +1,22 @@
+[  
+    {  
+       "bauthor": "카일 루든(Kyle Loudon)",
+       "bdate":"2000년 04월",
+       "btranslator":"허 욱",
+       "bpublisher":"한빛미디어(주)",
+       "btitle":"C로 구현한 알고리즘",
+       "bprice":25000,
+       "bisbn":"89-7914-063-0",
+       "bimgurl":"http://image.hanbit.co.kr/cover/_m_1063m.gif"
+    },
+    {  
+       "bauthor":"권기경, 박용우",
+       "bdate":"2002년 09월",
+       "btranslator":"",
+       "bpublisher":"한빛미디어(주)",
+       "btitle":"IT EXPERT, 모바일 자바 프로그래밍",
+       "bprice":23000,
+       "bisbn":"89-7914-206-4",
+       "bimgurl":"http://image.hanbit.co.kr/cover/_m_1206m.gif"
+    }
+]   

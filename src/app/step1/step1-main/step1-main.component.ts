@@ -7,6 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class Step1MainComponent implements OnInit {
 
+  selectedValue = null;
+  bookCategory = [
+    {value: 'all', viewValue: '국내외도서'},
+    {value: 'country', viewValue: '국내도서'},
+    {value: 'foreign', viewValue: '국외도서'}
+  ];
+  
   constructor() { }
 
   ngOnInit() {

@@ -1,3 +1,18 @@
-<p>
-  step1-list works!
-</p>
+<table class="example-container">
+    <thead>
+    <th>ISBN</th>
+    <th>Title</th>
+    <th>Author</th>
+    <th>Price</th>
+    </thead>
+    <tbody>
+      <!-- step1-list.component.ts에 books 속성과 연결-->
+      <tr *ngFor="let book of books">
+        <td>{{book.bisbn}}</td>
+        <td>{{book.btitle}}</td>
+        <td>{{book.bauthor}}</td>
+        <td>{{book.bprice}}</td>
+      </tr>
+    </tbody>
+  </table>
+  

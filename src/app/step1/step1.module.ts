@@ -9,9 +9,9 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import { MatInputModule } from '@angular/material';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
-
 import { MatCardModule } from '@angular/material/card';
-
+import {MatSelectModule} from '@angular/material/select';
+import {HttpClientModule} from '@angular/common/http';
 /* 
 양방향 바인딩을 위한 formsModule import
 [(ngModel)]과 같이 바인딩 대상 선언
@@ -33,7 +33,9 @@ import {COMPOSITION_BUFFER_MODE} from '@angular/forms';
     MatButtonModule,
     MatFormFieldModule,
     MatCardModule,
-    FormsModule
+    FormsModule,
+    MatSelectModule,
+    HttpClientModule
   ],
   providers: [
     {
