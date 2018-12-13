@@ -29,7 +29,12 @@
        bookCategory라는 이름으로 displayCategoryName을 바인딩 : property binding : 부 -> 자
        searchEvent 이벤트 발생시 changeTitleBar() 메소드가 인자를 받고 실행됨 : event binding : 자 -> 부 
     -->
-    <app-step1-search [bookCategory]="displayCategoryName" (searchEvent)="changeTitleBar($event)"></app-step1-search>
+    <app-step1-search [bookCategory]="displayCategoryName" (searchEvent)="changeTitleBar($event)">
+      <!-- content projection : 부모 component가 자식 component에게 특정 template을 전달해 줄 수 있는 기능-->
+      <p>Content Projection!</p>
+      <p>First Paragraph</p>
+      <p>Second Paragraph</p>
+    </app-step1-search>
   </div>
   <div>
     <app-step1-detail></app-step1-detail>
