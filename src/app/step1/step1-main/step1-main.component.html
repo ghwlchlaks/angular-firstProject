@@ -2,14 +2,14 @@
   <div class="d-flex align-items-center p-3 my-3 text-white-50 bg-purple rounded box-shadow">
     <img class="mr-3" src="assets/images/search-icon.png" alt="" width="48" height="48">
     <div class="lh-100">
-      <h5 class="mb-0 text-white lh-100">Search Result</h5>
+      <h5 class="mb-0 text-white lh-100">Search Result {{searchTitle}}</h5>
     </div>
   </div>
 
   <div class="example-container">
     <mat-form-field>
       <!-- selectedValue속성에 양방향 바인딩-->
-      <mat-select placeholder="도서종류" #bookCategorySelect [(ngModel)]="selectedValue" (ngModelChange)="changeValue(bookCategory.value)">
+      <mat-select placeholder="도서종류" #bookCategorySelect [(ngModel)]="selectedValue" (ngModelChange)="changeValue(bookCategorySelect.value)">
         <!-- angular 구조적 지시자(DOM을 제어하는 방식)인 ngIf, ngFor 등으로 조건문 처리 가능-->
         <mat-option *ngFor="let category of bookCategory"
                     [value]="category.value">
@@ -20,8 +20,11 @@
   </div>
 
   <div>
-    <!-- bookCategory라는 이름으로 displayCategoryName을 바인딩-->
-    <app-step1-search [bookCategory]="displayCategoryName"></app-step1-search>
+    <!--
+       bookCategory라는 이름으로 displayCategoryName을 바인딩 : property binding : 부 -> 자
+       searchEvent 이벤트 발생시 changeTitleBar() 메소드가 인자를 받고 실행됨 : event binding : 자 -> 부 
+    -->
+    <app-step1-search [bookCategory]="displayCategoryName" (searchEvent)="changeTitleBar($event)"></app-step1-search>
   </div>
   <div>
     <app-step1-detail></app-step1-detail>

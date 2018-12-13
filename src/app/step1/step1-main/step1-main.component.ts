@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class Step1MainComponent implements OnInit {
 
+  searchTitle = null;
   selectedValue = null;
   displayCategoryName = null;
   bookCategory = [
@@ -26,5 +27,9 @@ export class Step1MainComponent implements OnInit {
         this.displayCategoryName = element.viewValue;
       }
     }
+  }
+
+  changeTitleBar(searchInfo) : void {
+    this.searchTitle = `${searchInfo.keyword} ( ${searchInfo.category})`;
   }
 }

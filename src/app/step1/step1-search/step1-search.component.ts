@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-step1-search',
@@ -9,7 +9,7 @@ export class Step1SearchComponent implements OnInit {
 
   /*
   @input decorator
-  bookCategory라는 이름으로 부모 Component(step1-main) property binding으로 전달해준 데이터를 받을 수 있다.
+  bookCategory라는 이름으로 부모 Component(step1-main) `property binding`으로 전달해준 데이터를 받을 수 있다.
   만약, 다른 이름으로 사용하고 싶다면 @Input('상위컴포넌트값(bookCategory)') 사용할데이터이름 : 데이터타입(string);
   call by reference방식
   stateful component(상위 component) -데이터의 정보를 변경하거나 저장 할 수 있다. 
@@ -29,6 +29,15 @@ export class Step1SearchComponent implements OnInit {
       this._bookCategory = value
     }
   }
+
+  /*
+  @Output decorator
+  자식 component에서 부모 component로 데이터를 전달하는 방식
+  전달하기 위해서는 EventEmitter를 이용한 이벤트처리를 해야한다. 
+  `event binding`을 이용해 데이터를 받는 방식
+  */
+  @Output() searchEvent = new EventEmitter();
+
   // data binding : Interpolation(단방향 바인딩) -> component에서 선언한 속성을 view에서 사용하는 것, ex) {{value}}
   keyword = 'angular';
 
@@ -39,7 +48,12 @@ export class Step1SearchComponent implements OnInit {
 
   //버튼을 클릭했을떄 keyword값이 변경됨
   setKeyword(keyword: string): void {
-    this.keyword = keyword
+    this.keyword = keyword;
+    //search버튼을 눌렀을때 발생하는 이벤트로 이 안에 부모component에게 전달할 데이터를 인자로 넣어준다.
+    this.searchEvent.emit({
+      keyword : `${this.keyword}`,
+      category : `${this._bookCategory.replace('category: ', '')}`
+    })
   }
 
   inputChange(): void {
