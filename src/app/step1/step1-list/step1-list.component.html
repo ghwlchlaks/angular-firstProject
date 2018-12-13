@@ -1,18 +1,36 @@
-<table class="example-container">
-    <thead>
-    <th>ISBN</th>
-    <th>Title</th>
-    <th>Author</th>
-    <th>Price</th>
-    </thead>
-    <tbody>
-      <!-- step1-list.component.ts에 books 속성과 연결-->
-      <tr *ngFor="let book of books">
-        <td>{{book.bisbn}}</td>
-        <td>{{book.btitle}}</td>
-        <td>{{book.bauthor}}</td>
-        <td>{{book.bprice}}</td>
-      </tr>
-    </tbody>
-  </table>
+<div class="example-container mat-elevation-z8">
+  <!-- "dataSource" 실제 테이블에 redering되는 데이터-->
+    <mat-table class="list-table-style" #table [dataSource]="dataSource">
+      <!--  step1-list.component의 displayedColumns 배열과 매칭 되야함-->
+      <ng-container matColumnDef="bisbn">
+        <mat-header-cell *matHeaderCellDef> ISBN </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.bisbn}} </mat-cell>
+      </ng-container>
   
+      <ng-container matColumnDef="btitle">
+        <mat-header-cell *matHeaderCellDef> Title </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.btitle}} </mat-cell>
+      </ng-container>
+  
+      <ng-container matColumnDef="bauthor">
+        <mat-header-cell *matHeaderCellDef> Author </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.bauthor}} </mat-cell>
+      </ng-container>
+  
+      <ng-container matColumnDef="bprice">
+        <mat-header-cell *matHeaderCellDef> Price </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.bprice}} </mat-cell>
+      </ng-container>
+  
+      <mat-header-row class="list-header-style" 
+                      *matHeaderRowDef="displayedColumns">                  
+      </mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+  
+    <mat-paginator #paginator
+                   [pageSize]="5"
+                   [pageSizeOptions]="[5, 10, 20]"
+                   showFirstLastButtons>
+    </mat-paginator>
+  </div>
