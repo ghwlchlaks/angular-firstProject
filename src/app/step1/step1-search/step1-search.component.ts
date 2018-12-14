@@ -29,6 +29,7 @@ export class Step1SearchComponent implements OnInit {
   */
   //@Input() bookCategory:string;
   
+  @Input('selectedValue') selectedValue:string;
 
   //set을 이용하여 부로 컴포넌트에서 받은 데이터 가공
   _bookCategory: string;
@@ -69,9 +70,15 @@ export class Step1SearchComponent implements OnInit {
     })
 
     //injection 받은 service의 메소드를 실행
-    this.httpSupportService.getJsonData();
+    //this.httpSupportService.getJsonData();
+    //this.httpSupportService.getJsonConfig(this.jsonConfig.url, this.jsonConfig.name);
 
-    this.httpSupportService.getJsonConfig(this.jsonConfig.url, this.jsonConfig.name);
+    this.httpSupportService.getJsonData1(
+      this.jsonConfig.url,
+      this.jsonConfig.name,
+      this.selectedValue,
+      this.keyword
+    )
   }
 
   inputChange(): void {
