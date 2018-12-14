@@ -46,6 +46,11 @@ import {COMPOSITION_BUFFER_MODE} from '@angular/forms';
       provide: COMPOSITION_BUFFER_MODE,
       useValue: false
     }
+    // 하위 모듈은 모두 해당 의존 모듈을 사용할 수 있다. 만약 root module에 등록한다면 전역에서 사용가능한 의존 모듈을 설정하는 것을 의미한다. 
+    // providers: [
+    //   //angular framework에 어떤 클래스가 injection 됐는지 알려주는 역할 
+    //   HttpSupportService
+    // ]
   ]
 })
 export class Step1Module { }

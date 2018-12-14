@@ -1,9 +1,20 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+//http service import
+import {HttpSupportService} from '../http-support.service';
+import {JSON_DATA_CONFIG, JsonConfig} from './json-config';
 
 @Component({
   selector: 'app-step1-search',
   templateUrl: './step1-search.component.html',
-  styleUrls: ['./step1-search.component.css']
+  styleUrls: ['./step1-search.component.css'],
+  providers: [
+    //angular framework에 어떤 클래스가 injection 됐는지 알려주는 역할 
+    HttpSupportService,
+    {
+      provide : JsonConfig,
+      useValue: JSON_DATA_CONFIG
+    }
+  ]
 })
 export class Step1SearchComponent implements OnInit {
 
@@ -41,7 +52,9 @@ export class Step1SearchComponent implements OnInit {
   // data binding : Interpolation(단방향 바인딩) -> component에서 선언한 속성을 view에서 사용하는 것, ex) {{value}}
   keyword = 'angular';
 
-  constructor() { }
+  //consutructor을 이용해 http service가 injection
+  constructor(private httpSupportService : HttpSupportService,
+    private jsonConfig: JsonConfig) { }
 
   ngOnInit() {
   }
@@ -54,6 +67,11 @@ export class Step1SearchComponent implements OnInit {
       keyword : `${this.keyword}`,
       category : `${this._bookCategory.replace('category: ', '')}`
     })
+
+    //injection 받은 service의 메소드를 실행
+    this.httpSupportService.getJsonData();
+
+    this.httpSupportService.getJsonConfig(this.jsonConfig.url, this.jsonConfig.name);
   }
 
   inputChange(): void {
