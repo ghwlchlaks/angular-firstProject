@@ -5,6 +5,7 @@ import { Injectable } from '@angular/core';
 */
 import {HttpClient} from '@angular/common/http';
 import { isNgTemplate } from '@angular/compiler';
+import { BehaviorSubject } from 'rxjs';
 
 //원래는 interface로 따로 관리해야하지만 여기서는 중복된 코드로 사용
 interface IBook {
@@ -28,6 +29,11 @@ Injection은 생성자를 이용하게되고 Injection 과정은 Angular Framewo
 export class HttpSupportService {
 
   books : IBook[];
+  /*
+  BehaviorSubject 클래스는 연관된 데이터를 쉽게 subscribe하고 데이터를 변경하기 위해 제공되는 클래스
+  연관된 데이터를 생성자의 인자로 이용하여 객체를 생성한다.
+  */
+  updateBooks: BehaviorSubject<IBook[]> = new BehaviorSubject<IBook[]>(this.books);
   // private로 Injection된 HttpClient객체를 받는다.
   constructor(private http: HttpClient) { }
 
@@ -92,7 +98,11 @@ export class HttpSupportService {
         })
       }
 
-      this.books = tmp;
+      //Json 데이터(tmp)를 books에 할당
+      //this.books = tmp;
+      
+      //updateBooks의 메소드를 이용하여 books에 할당
+      this.updateBooks.next(tmp)
       console.log(this.books);
     })
   }
