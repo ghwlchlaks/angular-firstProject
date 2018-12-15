@@ -1,4 +1,16 @@
 import { Component, OnInit } from '@angular/core';
+import {HttpSupportService} from "../http-support.service";
+
+interface IBook {
+  bauthor: string;
+  bdate: string;
+  btranslator: string;
+  bpublisher: string;
+  btitle: string;
+  bprice: number;
+  bisbn: string;
+  bimgurl: string;
+}
 
 @Component({
   selector: 'app-step1-detail',
@@ -7,17 +19,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class Step1DetailComponent implements OnInit {
 
-  //step1 객체 생성
-  step1 = {
-    btitle : 'title입니다.',
-    bauthor : '저자입니다.',
-    bprice : 25000,
-    bdate : '2018년 12월',
-    bisbn : '1234-5678',
-    bimgurl: 'http://image.hanbit.co.kr/cover/_m_1340m.gif'
-  };
-  
-  constructor() { }
+  book : IBook;
+
+  constructor(private httpSupportService : HttpSupportService) {
+    this.httpSupportService.updateSelectedBook.subscribe(selectedBook => {
+      this.book = selectedBook;
+    })
+   }
 
   ngOnInit() {
   }

@@ -1,6 +1,3 @@
-<br>
-<button mat-raised-button color="warn"
-        (click)="getData()">Get DATA!</button>
 <div class="example-container mat-elevation-z8">
   <!-- "dataSource" 실제 테이블에 redering되는 데이터-->
     <mat-table class="list-table-style" #table [dataSource]="dataSource">
@@ -28,7 +25,7 @@
       <mat-header-row class="list-header-style" 
                       *matHeaderRowDef="displayedColumns">                  
       </mat-header-row>
-      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="rowSelect(row)"></mat-row>
     </mat-table>
   
     <mat-paginator #paginator

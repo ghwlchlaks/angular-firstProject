@@ -4,14 +4,15 @@ import { Injectable } from '@angular/core';
 여기서는 search에서만 이용하므로 이 위치에 해당 서비스 모듈 파일을 위치시킨다.
 */
 import {HttpClient} from '@angular/common/http';
+import { BehaviorSubject  } from 'rxjs';
 
 //원래는 interface로 따로 관리해야하지만 여기서는 중복된 코드로 사용
 interface IBook {
   bauthor : string;
   bdate : string;
-  btitle: string;
   btranslator : string;
   bpublisher : string;
+  btitle: string;
   bprice : number;
   bisbn : string;
   bimgurl : string;
@@ -27,9 +28,32 @@ Injection은 생성자를 이용하게되고 Injection 과정은 Angular Framewo
 export class HttpSupportService {
 
   books : IBook[];
-  // private로 Injection된 HttpClient객체를 받는다.
-  constructor(private http: HttpClient) { }
+  /*
+  BehaviorSubject 클래스는 연관된 데이터를 쉽게 subscribe하고 데이터를 변경하기 위해 제공되는 클래스
+  연관된 데이터를 생성자의 인자로 이용하여 객체를 생성한다.
+  */
+  //updateBooks: BehaviorSubject<IBook[]> = new BehaviorSubject<IBook[]>(this.books);
 
+  // 책 정보 초기화
+  selectedBook: IBook = {
+    bauthor: '',
+    bdate: '',
+    btranslator: '',
+    bpublisher: '',
+    btitle: '',
+    bprice: 0,
+    bisbn: '',
+    bimgurl: ''
+  };
+  
+  // private로 Injection된 HttpClient객체를 받는다.
+  constructor(private http: HttpClient) { 
+  }
+  //search한 책들에대한 subject 객체 생성
+  updateBooks: BehaviorSubject<IBook[]> = new BehaviorSubject<IBook[]>(this.books);
+  //선택된 책에대한 subject 객체 생성
+  updateSelectedBook: BehaviorSubject<IBook> = new BehaviorSubject<IBook>(this.selectedBook);
+  test : BehaviorSubject<string> = new BehaviorSubject("a");
   //Injection받은 HttpClient 객체를 이용해서 파일로부터 Json데이터를 읽는다.
   getJsonData() {
     this.http.get<IBook[]>('assets/data/book.json').subscribe(
@@ -49,7 +73,6 @@ export class HttpSupportService {
   }
 
   getJsonData1(url: string, name: string, category: string, keyword: string) {
-    //console.log(1+url + " " +2+ name + " " +3+ category + " " +4+ keyword)
     this.http.get<IBook[]>(`${url}${name}`).subscribe(res => {
       let tmp = null;
       // 도서 종류와 검색어를 이용하여 도서 데이터 filtering
@@ -91,13 +114,17 @@ export class HttpSupportService {
         })
       }
 
-      this.books = tmp;
-      console.log(this.books)
+      //Json 데이터(tmp)를 books에 할당
+      //this.books = tmp;
+      //console.log(this.books);
+
+      //updateBooks의 메소드를 이용하여 books에 할당
+      this.updateBooks.next(tmp)
+      
     })
   }
 
   getBooks(): IBook[] {
-    console.log(this.books)
     return this.books;
   }
 }
