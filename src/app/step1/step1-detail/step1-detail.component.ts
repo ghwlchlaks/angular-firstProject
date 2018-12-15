@@ -11,7 +11,7 @@ export class Step1DetailComponent implements OnInit {
   step1 = {
     btitle : 'title입니다.',
     bauthor : '저자입니다.',
-    bprice : '25000',
+    bprice : 25000,
     bdate : '2018년 12월',
     bisbn : '1234-5678',
     bimgurl: 'http://image.hanbit.co.kr/cover/_m_1340m.gif'

@@ -13,7 +13,7 @@ interface IBook {
   btitle: string;
   btranslator : string;
   bpublisher : string;
-  bprice : string;
+  bprice : number;
   bisbn : string;
   bimgurl : string;
 }
@@ -98,6 +98,7 @@ export class HttpSupportService {
   }
 
   getBooks(): IBook[] {
+    console.log(this.books)
     return this.books;
   }
 }
