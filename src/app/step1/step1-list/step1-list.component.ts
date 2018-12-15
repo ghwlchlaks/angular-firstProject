@@ -33,19 +33,15 @@ export class Step1ListComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
   constructor(private httpSupportService:HttpSupportService) {
-    // this.httpSupportService.updateBooks.subscribe((data) => {
-    //   console.log(data)
-    // /*
-    //   updateBooks를 구독하고 있다가 데이터가 변경되면 변경된 데이터를 자동으로 가져옴.
-    //   아래 getData처럼 getBooks라는 메소드를 만들어서 사용하지 않아도됨
-    // */
-    //   this.books = data;
-    //   this.dataSource = new MatTableDataSource<IBook>(this.books);
-    //   this.dataSource.paginator = this.paginator;
-    // })
-    // this.httpSupportService.test.subscribe((data) => {
-    //   console.log(data)
-    // })
+    this.httpSupportService.updateBooks.subscribe((data) => {
+    /*
+      updateBooks를 구독하고 있다가 데이터가 변경되면 변경된 데이터를 자동으로 가져옴.
+      아래 getData처럼 getBooks라는 메소드를 만들어서 사용하지 않아도됨
+    */
+      this.books = data;
+      this.dataSource = new MatTableDataSource<IBook>(this.books);
+      this.dataSource.paginator = this.paginator;
+    })
   }
 
   ngOnInit() {
@@ -56,10 +52,4 @@ export class Step1ListComponent implements OnInit {
     this.httpSupportService.updateSelectedBook.next(this.selection.selected[0]);
   }
 
-  getList() {
-    this.books = this.httpSupportService.getBooks();
-    //console.log(this.books)
-    this.dataSource = new MatTableDataSource<IBook>(this.books);
-    this.dataSource.paginator = this.paginator;
-  }
 }

@@ -116,12 +116,12 @@ export class HttpSupportService {
       }
 
       //Json 데이터(tmp)를 books에 할당
-      this.books = tmp;
+      //this.books = tmp;
       //console.log(this.books);
 
       //updateBooks의 메소드를 이용하여 books에 할당
       this.updateBooks.next(tmp)
-      this.test.next("b")
+      //this.test.next("b")
       //console.log(this.updateBooks.getValue())
       
     })

@@ -1,11 +1,12 @@
 import { Component, OnInit, ViewChild, ViewChildren, QueryList, ElementRef } from '@angular/core';
 //child view에 객체를 직접 접근 하기위한 참조
 import {Step1SearchComponent} from '../step1-search/step1-search.component';
-
+import { HttpSupportService } from "../http-support.service";
 @Component({
   selector: 'app-step1-main',
   templateUrl: './step1-main.component.html',
-  styleUrls: ['./step1-main.component.css']
+  styleUrls: ['./step1-main.component.css'],
+  providers:[HttpSupportService]
 })
 export class Step1MainComponent implements OnInit {
 
