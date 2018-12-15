@@ -1,13 +1,14 @@
 <mat-card class="example-card">
   <mat-card-header class="detail-header-style">
     <div mat-card-avatar class="example-header-image"></div>
-    <mat-card-title>제목 : {{step1.btitle}}</mat-card-title>
-    <mat-card-subtitle>저자 : {{step1.bauthor}}</mat-card-subtitle>
+    <mat-card-title>제목 : {{book.btitle}}</mat-card-title>
+    <mat-card-subtitle>저자 : {{book.bauthor}}</mat-card-subtitle>
   </mat-card-header>
-  <img mat-card-image class="book-image" src="{{step1.bimgurl}}">
+  <img mat-card-image class="book-image" src="{{book.bimgurl}}">
   <mat-card-content>
     <p>
-      ISBN : {{step1.bisbn}}, 도서 가격 : {{step1.bprice}}, 출판일 : {{step1.bdate}}
+      <!-- ISBN : {{step1.bisbn}}, 도서 가격 : {{step1.bprice}}, 출판일 : {{step1.bdate}} -->
+      ISBN : {{book.bisbn}}, 도서 가격 : {{book.bprice}}, 출판일 : {{book.bdate}}
     </p>
   </mat-card-content>
   <mat-card-actions>
@@ -16,6 +17,6 @@
     mat-button 
     mat-raised-button 
     color="primary" 
-    [disabled]="step1.bprice > 20000">바로 구입</button>
+    [disabled]="book.bprice > 20000">바로 구입</button>
   </mat-card-actions>
 </mat-card>
