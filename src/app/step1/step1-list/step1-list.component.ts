@@ -19,7 +19,8 @@ interface IBook {
 @Component({
   selector: 'app-step1-list',
   templateUrl: './step1-list.component.html',
-  styleUrls: ['./step1-list.component.css']
+  styleUrls: ['./step1-list.component.css'],
+  //providers:[HttpSupportService]
 })
 export class Step1ListComponent implements OnInit {
 
@@ -42,7 +43,6 @@ export class Step1ListComponent implements OnInit {
   constructor(private httpSupportService:HttpSupportService) {}
   getData(): void {
     this.books = this.httpSupportService.getBooks();
-    console.log(this.books)
     this.dataSource = new MatTableDataSource<IBook>(this.books);
     this.dataSource.paginator = this.paginator;
   }

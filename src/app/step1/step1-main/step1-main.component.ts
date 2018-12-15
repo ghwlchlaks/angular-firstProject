@@ -1,11 +1,18 @@
 import { Component, OnInit, ViewChild, ViewChildren, QueryList, ElementRef } from '@angular/core';
 //child view에 객체를 직접 접근 하기위한 참조
 import {Step1SearchComponent} from '../step1-search/step1-search.component';
+import {HttpSupportService} from '../http-support.service';
 
 @Component({
   selector: 'app-step1-main',
   templateUrl: './step1-main.component.html',
-  styleUrls: ['./step1-main.component.css']
+  styleUrls: ['./step1-main.component.css'],
+  /*
+  [중요!]
+  main이 상위 컴포넌트이기 때문에 providers를 선언해주어야한다. 
+  만약 하위 컴포넌트마다 providers를 선언한다면 서로다른 providers를 가져 데이터 공유를 할 수가 없다.
+  */
+  providers:[HttpSupportService]
 })
 export class Step1MainComponent implements OnInit {
 

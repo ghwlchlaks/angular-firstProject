@@ -9,7 +9,7 @@ import {JSON_DATA_CONFIG, JsonConfig} from './json-config';
   styleUrls: ['./step1-search.component.css'],
   providers: [
     //angular framework에 어떤 클래스가 injection 됐는지 알려주는 역할 
-    HttpSupportService,
+    //HttpSupportService,
     {
       provide : JsonConfig,
       useValue: JSON_DATA_CONFIG

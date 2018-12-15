@@ -4,7 +4,6 @@ import { Injectable } from '@angular/core';
 여기서는 search에서만 이용하므로 이 위치에 해당 서비스 모듈 파일을 위치시킨다.
 */
 import {HttpClient} from '@angular/common/http';
-import { isNgTemplate } from '@angular/compiler';
 
 //원래는 interface로 따로 관리해야하지만 여기서는 중복된 코드로 사용
 interface IBook {
@@ -93,7 +92,7 @@ export class HttpSupportService {
       }
 
       this.books = tmp;
-      console.log(this.books);
+      console.log(this.books)
     })
   }
 
