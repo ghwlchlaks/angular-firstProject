@@ -17,7 +17,6 @@ import {Step2Module} from './step2/step2.module';
 //routing module import 
 import {AppRoutingModule} from './app-routing/app-routing.module';
 
-import { BookPricePipe } from './book-price.pipe';
 
 /*
 @NgModule -> 해당 클래스가 모듈이란것을 명시
@@ -29,8 +28,7 @@ metadata:declarations : 사용하는 component를 등록해야 component의 type
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
-    BookPricePipe
+    HomeComponent
   ],
   imports: [
     BrowserModule,

@@ -20,9 +20,7 @@
       <ng-container matColumnDef="bprice">
         <mat-header-cell *matHeaderCellDef> Price </mat-header-cell>
         <!-- 파이프를 이용하여 통화단위 표시-->
-        <!-- <mat-cell *matCellDef="let element"> {{element.bprice | currency: 'KRW'}} </mat-cell> -->
-        <!-- 커스텀 파이프를 이용하여 통화 표시-->
-        <mat-cell *matCellDef="let element"> {{element.bprice | bookPrice}} </mat-cell>
+        <mat-cell *matCellDef="let element"> {{element.bprice | currency: 'KRW'}} </mat-cell>
       </ng-container>
   
       <mat-header-row class="list-header-style" 
