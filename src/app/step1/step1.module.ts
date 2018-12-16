@@ -25,9 +25,10 @@ import {FormsModule} from '@angular/forms';
 COMPOSITION_BUFFER_MODE import
 */
 import {COMPOSITION_BUFFER_MODE} from '@angular/forms';
+import { ChildComponent } from './child/child.component';
 
 @NgModule({
-  declarations: [Step1MainComponent, Step1SearchComponent, Step1DetailComponent, Step1ListComponent],
+  declarations: [Step1MainComponent, Step1SearchComponent, Step1DetailComponent, Step1ListComponent, ChildComponent],
   imports: [
     CommonModule,
     MatToolbarModule,
